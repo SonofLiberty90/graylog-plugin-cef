@@ -70,8 +70,7 @@ public class CEFCodec implements Codec {
             result.addField("device_version", cef.deviceVersion());
             result.addField("event_class_id", cef.deviceEventClassId());
             result.addField("name", cef.name());
-            result.addField("severity", cef.humanReadableSeverity());
-            result.addField("severity_number", cef.severity());
+            result.addField("severity", cef.severity());
 
             // Add msg field if the CEF message has one.
             result.addField("msg", cef.message());
@@ -87,7 +86,7 @@ public class CEFCodec implements Codec {
                 .append(cef.deviceProduct())
                 .append(": ")
                 .append("[").append(cef.deviceEventClassId()).append(", ")
-                .append(cef.humanReadableSeverity()).append("] ")
+                .append(cef.severity()).append("] ")
                 .append(cef.name())
                 .toString();
     }

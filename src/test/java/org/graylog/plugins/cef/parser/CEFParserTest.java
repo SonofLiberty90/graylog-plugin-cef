@@ -32,8 +32,7 @@ public class CEFParserTest {
         assertEquals("v2.8.3", m.deviceVersion());
         assertEquals("2502", m.deviceEventClassId());
         assertEquals("User missed the password more than one time", m.name());
-        assertEquals(10, m.severity());
-        assertEquals("VERY HIGH", m.humanReadableSeverity());
+        assertEquals("10", m.severity());
 
         assertEquals("Aug 14 14:26:53 ip-172-30-2-212 sshd[16217]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=116.31.116.17  user=root", m.message());
 
@@ -66,8 +65,7 @@ public class CEFParserTest {
         assertEquals("v2.8.3", m.deviceVersion());
         assertEquals("2502", m.deviceEventClassId());
         assertEquals("User missed the password more than one time", m.name());
-        assertEquals(10, m.severity());
-        assertEquals("VERY HIGH", m.humanReadableSeverity());
+        assertEquals("10", m.severity());
 
         assertNull(m.message());
 
@@ -113,8 +111,7 @@ public class CEFParserTest {
         assertEquals("v2.8.3", m.deviceVersion());
         assertEquals("2502", m.deviceEventClassId());
         assertEquals("User missed the password more than one time", m.name());
-        assertEquals(10, m.severity());
-        assertEquals("VERY HIGH", m.humanReadableSeverity());
+        assertEquals("10", m.severity());
 
         assertEquals("Aug 14 14:26:53 ip-172-30-2-212 sshd[16217]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=116.31.116.17  user=root", m.message());
 
@@ -146,8 +143,7 @@ public class CEFParserTest {
         assertEquals("v2.8.3", m.deviceVersion());
         assertEquals("2502", m.deviceEventClassId());
         assertEquals("User missed the password more than one time", m.name());
-        assertEquals(10, m.severity());
-        assertEquals("VERY HIGH", m.humanReadableSeverity());
+        assertEquals("10", m.severity());
 
         assertEquals("Aug 14 14:26:53 ip-172-30-2-212 sshd[16217]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=116.31.116.17  user=root", m.message());
 
