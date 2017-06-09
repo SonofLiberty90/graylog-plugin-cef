@@ -16,7 +16,7 @@ public class CEFParser {
      *   - benchmark regex
      */
 
-    private static final Pattern HEADER_PATTERN = Pattern.compile("(?:^<\\d+>([a-zA-Z]{3} \\d{1,2} \\d{1,2}:\\d{1,2}:\\d{1,2}).*|^)CEF:(\\d+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)(?:$| (msg=.+))", Pattern.DOTALL);
+    private static final Pattern HEADER_PATTERN = Pattern.compile("(?:^<\\d+>([a-zA-Z]{3}\\s+\\d{1,2} \\d{1,2}:\\d{1,2}:\\d{1,2}).*|^)CEF:(\\d+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)\\|(.+?)(?:$| (msg=.+))", Pattern.DOTALL);
     private static final DateTimeFormatter TIMESTAMP_PATTERN = DateTimeFormat.forPattern("MMM dd HH:mm:ss");
 
     private static final CEFFieldsParser FIELDS_PARSER = new CEFFieldsParser();
@@ -39,7 +39,7 @@ public class CEFParser {
                 // no syslog timestamp, using current time
                 timestamp = DateTime.now(timezone);
             } else {
-                timestamp = DateTime.parse(m.group(1), TIMESTAMP_PATTERN)
+                timestamp = DateTime.parse(m.group(1).replace("  " , " "), TIMESTAMP_PATTERN)
                         .withYear(DateTime.now(timezone).getYear())
                         .withZoneRetainFields(timezone);
             }
@@ -51,7 +51,7 @@ public class CEFParser {
             builder.deviceVersion(m.group(5));
             builder.deviceEventClassId(m.group(6));
             builder.name(m.group(7));
-            builder.severity(Integer.valueOf(m.group(8)));
+            builder.severity(String.valueOf(m.group(8)));
 
             // Parse and add all CEF fields.
             String fieldsString = m.group(9);
